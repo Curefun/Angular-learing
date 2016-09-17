@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ng-repeat 指令</title>
+  <script src="node_modules/angular/angular.js"></script>
+  <style>
+    .red {
+      color: red;
+    }
+
+    .green {
+      color: green;
+    }
+  </style>
+
+</head>
+
+<body ng-app="myApp">
+  <input type="text" ng-model="lastname">
+  <ul ng-controller="ListController">
+    <li ng-repeat="name in students track by $index" ng-class="{red:lastname!=''&&name.startsWith(lastname)}">{{name}}</li>
+  </ul>
+  <script>
+    angular.module('myApp', [])
+      .controller('ListController', ['$scope', function($scope) {
+
+
+        $scope.students = ['胡shit', '赵四', '网商务', '李三', '李三', '李三'];
+
+
+      }]);
+  </script>
+</body>
+
+</html>

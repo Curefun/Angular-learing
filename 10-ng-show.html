@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-class</title>
+	<script src="node_modules/angular/angular.js"></script>
+</head>
+<style>
+	.tips{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(100,100,100,0.5);
+		font-size: 40px;
+		line-height: 100vh;
+		text-align: center;
+	}
+</style>
+<body ng-controller="Listcontroller">
+	<div>
+		aaaaaaa
+	</div>
+	<div class="tips" ng-if="loading">
+		loading......
+	</div>
+	<script>
+		angular.module('myApp',[]).controller('Listcontroller', ['$scope','$timeout' ,function($scope,$timeout){
+			$scope.loading = true;
+			$timeout(function(){
+				$scope.loading = false;
+				$timeout(function(){
+					$scope.loading = true;
+				},3000)
+			},3000);
+		}]);
+	</script>
+</body>
+</html>

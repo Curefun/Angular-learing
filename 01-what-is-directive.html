@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+</head>
+<body>
+	<!--angular找到第一个ng-app过后就不会再继续找-->
+	<div ng-app="myApp1" ng-controller="myApp1Controller">
+		<input type="button" value="按钮1" ng-click="do1()">
+	</div>
+	<div></div>	
+	<script>
+		var myApp1=angular.module('myApp1',[]);
+		myApp1.controller('myApp1Controller', ['$scope', function($scope){
+			$scope.do1=function(){
+				console.log(1111);
+			}
+		}]);
+		var myApp2 = angular.module('myApp2',[]);
+		myApp2.controller('myApp2Controller', ['$scope', function($scope){
+			console.log(2222);
+		}])
+	</script>
+</body>
+</html>

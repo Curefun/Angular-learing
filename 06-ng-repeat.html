@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-repeat</title>
+	<script src="node_modules/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+	<ul ng-controller="ListController">
+		<li ng-repeat="item in xiaohei" data-id="{{item.id}}">
+			<span>{{$first?'開始':''}}</span>
+			<strong>{{item.name}}</strong>
+			<span>{{item.age}}</span>
+			<span>{{$last?'沒有了':''}}</span>
+		</li>
+	</ul>
+</body>
+<script>
+	angular.module('myApp',[]).controller('ListController', ['$scope', function($scope){
+		$scope.xiaohei = [];
+		for(var i=0;i<10;i++){
+			$scope.xiaohei[$scope.xiaohei.length]={
+				id:i,
+				name:'小黑'+i,
+				age:20+i
+			};
+		}
+	}])
+</script>
+</html>

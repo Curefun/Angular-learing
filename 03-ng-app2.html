@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-app2</title>
+	<script src="node_modules/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="App1Controller">
+		<input type="button"  value="按钮1" ng-click="do1()">
+	</div>
+	<div ng-controller="App2Controller">
+		<input type="button" value="按钮2" ng-click="do2()">
+	</div>
+	<script>
+		//零件1
+		var myApp1 = angular.module('myApp1',[]);
+		myApp1.controller('App1Con', ['$scope', function($scope){
+			$scope.do1=function(){
+				console.log(1111);
+			}
+			
+		}]);
+		//零件2
+		var myApp2 = angular.module('myApp2',[]);
+		myApp2.controller('App2Controller', ['$scope', function($scope){
+			$scope.do2 = function(){
+				console.log(2222);
+			}	
+		}]);
+
+		angular.module('myApp',['myApp1,'myApp2']);
+	</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>filter</title>
+	<script src="node_modules/angular/angular.js"></script>
+</head>
+<body>
+	<div ng-app="app">
+		<input type="text" ng-model="search">
+		<ul ng-controller="ListController" >
+			<li ng-repeat="item in todos | filter:{completed:true}">
+				<span>{{item.id}}</span>
+				<span>{{item.text}}</span>
+				<span>{{item.completed}}</span>
+			</li>
+		</ul>
+	</div>
+	<script>
+		angular.module('app',[])
+			.controller('ListController', ['$scope', function($scope){
+				$scope.todos = [{
+						          id: 0.123,
+						          text: '学习',
+						          completed: true
+						        }, {
+						          id: 0.22,
+						          text: '睡觉',
+						          completed: false
+						        }, {
+						          id: 0.232,
+						          text: '打豆豆',
+						          completed: true
+						        }, {
+						          id: 0.2321,
+						          text: '睡觉1',
+						          completed: true
+						        }, {
+						          id: 0.2322,
+						          text: '学习1',
+						          completed: false
+						        }, {
+						          id: 0.2323,
+						          text: '打豆豆1',
+						          completed: true
+						        }, {
+						          id: 0.2323,
+						          text: '打豆豆2',
+						          completed: true
+						        },  {
+						          id: 0.2323,
+						          text: '打豆豆3',
+						          completed: true
+						        },  {
+						          id: 0.2323,
+						          text: '打豆豆4',
+						          completed: true
+						        }];
+				
+			}])
+	</script>
+</body>
+</html>

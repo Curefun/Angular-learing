@@ -5,7 +5,7 @@
 	 */
 	var myApp =angular.module('MyTodoMvc',[]);
 	//注册一个控制器
-	myApp.controller('MainController', ['$scope', function($scope){
+	myApp.controller('MainController', ['$scope', '$location',function($scope,$location){
 		 
 		 function getId(){
 		 	var id = Math.random();
@@ -91,6 +91,22 @@
 			}
 			now = !now;
 		};
+		//状态筛选
+		$scope.selector = {}//{completed:true} {completed:false}
+		$scope.$location = $location;
+		$scope.$watch('$location.path()',function(now,old){
+			switch(now){
+				case '/active':
+				$scope.selector = {completed:false}
+				break;
+				case '/completed':
+				$scope.selector = {completed:true}
+				break;
+				default:
+				$scope.selector = {}
+				break;
+			}
+		});
 
 	}]);
 
